@@ -1,0 +1,24 @@
+class Solution {
+public:
+    long long minimumOperations(vector<int>& nums, vector<int>& target) {
+        int prev=0;//keep track on the prev index of the current index
+        int len=nums.size();
+        long long res=0;
+        vector<int>diff(len);
+        for(int i=0;i<len;i++){
+            diff[i]=target[i]-nums[i];
+        }
+        for(int i=0;i<len;i++){
+            int current=diff[i];
+            //check for sign change
+            if((current>0 && prev<0)||(current<0 && prev>0)){
+                //sovle them independently
+                res+=abs(current);
+            }else if(abs(current)>abs(prev)){
+                res+=abs(current)-abs(prev);
+            }
+            prev=current;
+        }
+        return res;
+    }
+};
