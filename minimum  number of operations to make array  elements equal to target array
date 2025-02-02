@@ -14,7 +14,7 @@ public:
             if((current>0 && prev<0)||(current<0 && prev>0)){
                 //sovle them independently
                 res+=abs(current);
-            }else if(abs(current)>abs(prev)){
+            }else if(abs(current)>abs(prev)){//work for both are positive or negative 
                 res+=abs(current)-abs(prev);
             }
             prev=current;
